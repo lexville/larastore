@@ -22,7 +22,7 @@ class StoresController extends Controller
             'description' => 'required|min:20'
         ]);
 
-        User::create([
+        Store::create([
             'name' => $request->input('store'),
             'description' => $request->input('description'),
             'user_id' => auth()->user()->id,
