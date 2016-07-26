@@ -17,6 +17,12 @@ class ProductsController extends Controller
 
     public function postProduct(Request $request, $id)
     {
+        $this->validate($request, [
+            'product_price' => 'required',
+            'product_name' => 'required|max:20',
+            'product_description' => 'required|min:20',
+        ]);
+        
         $store = Store::findOrFail($id);
 
         $newProduct = new Product;
