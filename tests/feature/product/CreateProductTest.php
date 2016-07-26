@@ -4,6 +4,7 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App\User;
+use App\Store;
 use App\Product;
 
 class CreateProductTest extends TestCase
@@ -46,11 +47,13 @@ class CreateProductTest extends TestCase
     {
         $user = factory(User::class)->create();
 
+        $store - factory(Store::class)->create();
+
         $this->actingAs($user)
-            ->visit('/store/product/create')
-            ->type('New Product', 'product')
-            ->type('Product Description', 'description')
-            ->type('12', 'price')
+            ->visit('/store/1/product/create')
+            ->type('New Product', 'product_name')
+            ->type('Product Description', 'product_description')
+            ->type('12', 'product_price')
             ->press('Add Product')
             ->notSeeInDatabase('products', ['product' => 'New Product']);
     }
