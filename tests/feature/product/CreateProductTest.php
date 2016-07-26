@@ -23,37 +23,40 @@ class CreateProductTest extends TestCase
 
     public function testStoreOwnerCanCreateProduct()
     {
-        $user = factory(User::class)->create();    
-        // $this->actingAs($user)
-        //     ->visit('/store/product/create')
-        //     ->type('New Product', 'product_name')
-        //     ->type('New Product Description', 'product_description')
-        //     ->type('12', 'product_price')
-        //     ->press('Add Product')
-        //     ->seeInDatabase('products', ['product_name' => 'New Product']);
+        $user = factory(User::class)->create();
+
+        $store = factory(Store::class)->create();
+
+        $this->actingAs($user)
+            ->visit('/store/1/product/create')
+            ->type('New Product', 'product_name')
+            ->type('New Product Description', 'product_description')
+            ->type('12', 'product_price')
+            ->press('Add New Product')
+            ->seeInDatabase('products', ['product_name' => 'New Product']);
     }
 
-    // public function testProductNumberIncreasesInDatabase()
-    // {
-    //     factory(Product::class, 10)->create();
-    //
-    //     $newProduct = Product::count();
-    //
-    //     $this->count(10, $newProduct);
-    // }
+    public function testProductNumberIncreasesInDatabase()
+    {
+        factory(Product::class, 10)->create();
 
-    // public function testProductCreatedIfValidationPasses()
-    // {
-    //     $user = factory(User::class)->create();
-    //
-    //     $store - factory(Store::class)->create();
-    //
-    //     $this->actingAs($user)
-    //         ->visit('/store/1/product/create')
-    //         ->type('New Product', 'product_name')
-    //         ->type('Product Description', 'product_description')
-    //         ->type('12', 'product_price')
-    //         ->press('Add Product')
-    //         ->notSeeInDatabase('products', ['product_name' => 'New Product']);
-    // }
+        $newProduct = Product::count();
+
+        $this->count(10, $newProduct);
+    }
+
+    public function testProductCreatedIfValidationPasses()
+    {
+        $user = factory(User::class)->create();
+
+        $store - factory(Store::class)->create();
+
+        $this->actingAs($user)
+            ->visit('/store/1/product/create')
+            ->type('New Product', 'product_name')
+            ->type('Product Description', 'product_description')
+            ->type('12', 'product_price')
+            ->press('Add Product')
+            ->notSeeInDatabase('products', ['product_name' => 'New Product']);
+    }
 }
