@@ -28,7 +28,7 @@ class CreateStoreTest extends TestCase
             ->visit('/store/create')
             ->type('New Store', 'store')
             ->type('Store Description', 'description')
-            ->click('Add New Store')
+            ->press('Add New Store')
             ->seeInDatabase('stores', ['name' => 'New Store']);
     }
 
