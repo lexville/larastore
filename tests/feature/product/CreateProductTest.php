@@ -49,14 +49,14 @@ class CreateProductTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-        $store - factory(Store::class)->create();
+        $store = factory(Store::class)->create();
 
         $this->actingAs($user)
             ->visit('/store/1/product/create')
             ->type('New Product', 'product_name')
             ->type('Product Description', 'product_description')
             ->type('12', 'product_price')
-            ->press('Add Product')
+            ->press('Add New Product')
             ->notSeeInDatabase('products', ['product_name' => 'New Product']);
     }
 }
