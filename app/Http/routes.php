@@ -27,3 +27,12 @@ Route::get('/store/create', [
 Route::post('/store/create', [
     'uses' => 'StoresController@postStore'
 ]);
+
+Route::get('/store/{id}/product/create', [
+    'uses' => 'ProductsController@getProducts',
+    'as'  => 'products'
+]);
+
+Route::post('/store/{id}/product/create', [
+    'uses' => 'ProductsController@postProduct'
+]);
