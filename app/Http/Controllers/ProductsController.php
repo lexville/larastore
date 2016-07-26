@@ -12,7 +12,7 @@ class ProductsController extends Controller
 {
     public function getProducts()
     {
-        return view('products.index');
+        return view('products.create');
     }
 
     public function postProduct(Request $request, $id)
