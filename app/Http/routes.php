@@ -21,25 +21,30 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/store/create', [
     'uses' => 'StoresController@getStore',
-    'as' => 'store'
+    'as' => 'store',
+    'middleware' => 'auth',
 ]);
 
 Route::post('/store/create', [
-    'uses' => 'StoresController@postStore'
+    'uses' => 'StoresController@postStore',
+    'middleware' => 'auth'
 ]);
 
 Route::get('/store/{id}/product/create', [
     'uses' => 'ProductsController@getProducts',
-    'as'  => 'products'
+    'as'  => 'products',
+    'middleware' => 'auth'
 ]);
 
 Route::post('/store/{id}/product/create', [
-    'uses' => 'ProductsController@postProduct'
+    'uses' => 'ProductsController@postProduct',
+    'middleware' => 'auth'
 ]);
 
 Route::get('/store', [
     'uses' => 'StoresController@getAllStores',
     'as' => 'store.all',
+    'middleware' => 'auth'
 ]);
 
 Route::get('/store/{id}', [

@@ -34,5 +34,7 @@ class ProductsController extends Controller
         $newProduct->user_id = auth()->user()->id;
 
         $newProduct->save();
+
+        return redirect('/store');
     }
 }
