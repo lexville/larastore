@@ -49,7 +49,7 @@ class CreateProductTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-        $store = factory(Store::class)->create();
+        factory(Store::class)->create();
 
         $this->actingAs($user)
             ->visit('/store/1/product/create')
