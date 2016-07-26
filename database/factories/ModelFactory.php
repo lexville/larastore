@@ -1,4 +1,5 @@
 <?php
+use App\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,5 +26,15 @@ $factory->define(App\Store::class, function (Faker\Generator $faker) {
         'name' => $faker->name,
         'description' => $faker->paragraph,
         'user_id' => rand(1, 5),
+    ];
+});
+
+$factory->define(App\Product::class, function (Faker\Generator $faker) {
+    return [
+        'product_name' => $faker->name,
+        'product_price' => 100,
+        'product_description' => $faker->paragraph,
+        'user_id' => rand(1, 5),
+        'store_id' => rand(1, 5),
     ];
 });
