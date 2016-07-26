@@ -10,6 +10,12 @@ use App\User;
 
 class StoresController extends Controller
 {
+    public function getIndividualStore($id)
+    {
+        $store = Store::findOrFail($id);
+
+        return view('store.show', ['store' => $store]);
+    }
     public function getAllStores()
     {
         $allStores = Store::where('user_id', auth()->user()->id)->get();

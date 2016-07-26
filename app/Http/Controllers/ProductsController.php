@@ -10,9 +10,10 @@ use App\Product;
 
 class ProductsController extends Controller
 {
-    public function getProducts()
+    public function getProducts($id)
     {
-        return view('products.create');
+        $store = Store::findOrFail($id);
+        return view('products.create', ['store' => $store]);
     }
 
     public function postProduct(Request $request, $id)
@@ -22,7 +23,7 @@ class ProductsController extends Controller
             'product_name' => 'required|max:20',
             'product_description' => 'required|min:20',
         ]);
-        
+
         $store = Store::findOrFail($id);
 
         $newProduct = new Product;

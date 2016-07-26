@@ -3,7 +3,8 @@
 @section('content')
 <div class="container">
     <h2>Create Product</h2>
-    {!! Form::open(array('url' => '/store/1/product/create', 'method' => 'POST')) !!}
+    
+    {!! Form::open(array("route" => ['products', $store->id], 'method' => 'POST')) !!}
 
     <div class="form-group">
         {!! Form::label('product_name', 'Product Name:', ['class' => 'control-label']) !!}

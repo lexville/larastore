@@ -41,3 +41,8 @@ Route::get('/store', [
     'uses' => 'StoresController@getAllStores',
     'as' => 'store.all',
 ]);
+
+Route::get('/store/{id}', [
+    'uses' => 'StoresController@getIndividualStore',
+    'as' => 'store.show',
+]);
