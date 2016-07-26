@@ -40,4 +40,16 @@ class CreateStoreTest extends TestCase
 
         $this->count(10, $allStores);
     }
+
+    public function testCreateStoreIfValidationPasses()
+    {
+        $user = factory(User::class)->create();
+
+        $this->actingAs($user)
+            ->visit('/store/create')
+            ->type('New Store', 'store')
+            ->type('Store Description', 'description')
+            ->press('Add New Store')
+            ->notSeeInDatabase('stores', ['name' => 'New Store']);
+    }
 }
