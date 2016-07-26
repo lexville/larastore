@@ -6,12 +6,12 @@
     {!! Form::open(array('route' => 'store', 'method' => 'POST')) !!}
 
     <div class="form-group">
-        {!! Form::label('store', 'Store's Name:', ['class' => 'control-label']) !!}
+        {!! Form::label('store', 'Store Name:', ['class' => 'control-label']) !!}
         {!! Form::text('store', null, ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('description', 'Store's Description:', ['class' => 'control-label']) !!}
+        {!! Form::label('description', 'Store Description:', ['class' => 'control-label']) !!}
         {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
     </div>
     {!! Form::submit('Add New Store', ['class' => 'btn btn-primary']) !!}
