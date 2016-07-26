@@ -27,11 +27,11 @@ class CreateProductTest extends TestCase
 
         $this->actingAs($user)
             ->visit('/store/product/create')
-            ->type('New Product', 'product')
-            ->type('New Product Description', 'description')
-            ->type('12', 'price')
+            ->type('New Product', 'product_name')
+            ->type('New Product Description', 'product_description')
+            ->type('12', 'product_price')
             ->press('Add Product')
-            ->seeInDatabase('products', ['product' => 'New Product']);
+            ->seeInDatabase('products', ['product_name' => 'New Product']);
     }
 
     public function testProductNumberIncreasesInDatabase()
@@ -55,6 +55,6 @@ class CreateProductTest extends TestCase
             ->type('Product Description', 'product_description')
             ->type('12', 'product_price')
             ->press('Add Product')
-            ->notSeeInDatabase('products', ['product' => 'New Product']);
+            ->notSeeInDatabase('products', ['product_name' => 'New Product']);
     }
 }
