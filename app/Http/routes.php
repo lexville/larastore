@@ -36,3 +36,8 @@ Route::get('/store/{id}/product/create', [
 Route::post('/store/{id}/product/create', [
     'uses' => 'ProductsController@postProduct'
 ]);
+
+Route::get('/store', [
+    'uses' => 'StoresController@getAllStores',
+    'as' => 'store.all',
+]);

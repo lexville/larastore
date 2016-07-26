@@ -10,6 +10,12 @@ use App\User;
 
 class StoresController extends Controller
 {
+    public function getAllStores()
+    {
+        $allStores = Store::where('user_id', auth()->user()->id)->get();
+
+        return view('store.index', ['allStores' => $allStores]);
+    }
     public function getStore()
     {
         return view('store.create');
